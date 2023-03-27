@@ -49,5 +49,7 @@ Route::get('/contact', function () {
 });
 
 Route::get('/auth/login', function () {
-    return view('auth.login');
+    return view('auth.login', [
+        'title' => "Login"
+    ]);
 });
