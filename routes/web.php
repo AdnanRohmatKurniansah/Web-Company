@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SlideController;
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -48,8 +50,19 @@ Route::get('/contact', function () {
     ]);
 });
 
-Route::get('/auth/login', function () {
-    return view('auth.login', [
-        'title' => "Login"
-    ]);
+
+Route::prefix('auth')->group(function () {
+    Route::get('/login', [AuthController::class, 'index'])->name('login');
+    Route::post('/login', [AuthController::class, 'authenticate']);
+});
+
+Route::post('/logout', [AuthController::class, 'logout']);
+
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard/index', function () {
+        return view('dashboard.index');
+    });
+    Route::resource('/dashboard/slides/index', SlideController::class)->except('show');
+    Route::get('/dashboard/slides/checkSlug', [SlideController::class, 'checkSlug']);
 });

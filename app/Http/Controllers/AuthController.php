@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
     public function index() {
-        return view('auth.login');
+        return view('auth.login', [
+            'title' => "Login"
+        ]);
     }
 
     public function authenticate(Request $request) {
@@ -19,12 +21,12 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->with('success', 'Login Successfuly')->intended('/dashboard');
+            return redirect()->intended('/dashboard/index')->with('success', 'Login Successfuly');
         }
         return back()->with('LoginError', 'Login failed');
         
     }
-    public function logout(Request $request) {
+    public function logout() {
         Auth::logout();
 
         request()->session()->invalidate();
