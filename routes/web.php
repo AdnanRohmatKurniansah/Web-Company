@@ -63,6 +63,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/index', function () {
         return view('dashboard.index');
     });
-    Route::resource('/dashboard/slides/index', SlideController::class)->except('show');
-    Route::get('/dashboard/slides/checkSlug', [SlideController::class, 'checkSlug']);
+    Route::resource('/dashboard/slides', SlideController::class)->except('show');
 });

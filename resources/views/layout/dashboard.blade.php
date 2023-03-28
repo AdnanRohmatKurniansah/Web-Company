@@ -20,6 +20,10 @@
     <!-- Custom styles for this template-->
     <link href="/assets/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <!-- TRix -->
+    <link rel="stylesheet" type="text/css" href="/assets/css/trix.css">
+    <script type="text/javascript" src="/assets/js/trix.js"></script>
+
 </head>
 
 <body id="page-top">

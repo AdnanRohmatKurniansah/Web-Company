@@ -13,7 +13,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li class="nav-item {{ Request::is('dashboard/index') ? 'active' : '' }}">
         <a class="nav-link" href="/dashboard/index">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -27,10 +27,35 @@
         Interface
     </div>
 
-    <li class="nav-item">
-        <a class="nav-link" href="/dashboard/slides/index">
+    <li class="nav-item {{ Request::is('dashboard/slides*') ? 'active' : '' }}">
+        <a class="nav-link" href="/dashboard/slides">
             <i class="fa-solid fa-image"></i>
             <span>Slides</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/dashboard/slides">
+            <i class="fa-regular fa-address-card"></i>
+            <span>About</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/dashboard/slides">
+            <i class="fa-solid fa-image"></i>
+            <span>Services</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/dashboard/slides">
+            <i class="fa-solid fa-image"></i>
+            <span>Portfolio</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/dashboard/slides">
+            <i class="fa-solid fa-image"></i>
+            <span>Blog Post</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/dashboard/slides">
+            <i class="fa-solid fa-image"></i>
+            <span>Contact</span></a>
     </li>
 
     <!-- Nav Item - Utilities Collapse Menu -->

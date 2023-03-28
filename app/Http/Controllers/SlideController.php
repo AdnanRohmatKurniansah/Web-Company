@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Slide;
-use \Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -24,7 +23,7 @@ class SlideController extends Controller
      */
     public function create()
     {
-        //
+        return view('dashboard.slides.create');
     }
 
     /**
@@ -33,9 +32,9 @@ class SlideController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'image-name' => 'required|max:60',
-            'slug' => 'required|unique:slides',
-            'image' => 'image|file|2048'    
+            'mainTitle' => 'required|max:25',
+            'subTitle' => 'required|max:45',
+            'image' => 'image|file|max:2048'    
         ]);
 
         if ($request->file('image')) {
@@ -44,7 +43,7 @@ class SlideController extends Controller
 
         Slide::create($validatedData);
 
-        return redirect('/dashboard/slides/index')->with('success', 'New Slide has been added!');
+        return redirect('/dashboard/slides')->with('success', 'New Slide has been added!');
 
     }
 
@@ -61,7 +60,9 @@ class SlideController extends Controller
      */
     public function edit(Slide $slide)
     {
-        //
+        return view('dashboard.slides.edit', [
+            'slide' => $slide
+        ]);
     }
 
     /**
@@ -69,7 +70,27 @@ class SlideController extends Controller
      */
     public function update(Request $request, Slide $slide)
     {
-        //
+        $validatedData = $request->validate([
+            'mainTitle' => 'required|max:25',
+            'subTitle' => 'required|max:45',
+            'image' => 'image|file|max:2048'    
+        ]);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('slide-images');
+        }
+
+        if($request->file('image')) {
+            $validatedData['image'] = $request->file('image')->store('slide-images');
+        } 
+
+        Slide::where('id', $slide->id)
+             ->update($validatedData);
+        
+        return redirect('/dashboard/slides')->with('success', 'Slide has been updated!');
     }
 
     /**
@@ -77,12 +98,11 @@ class SlideController extends Controller
      */
     public function destroy(Slide $slide)
     {
-        //
-    }
-
-    public function checkSlug(Request $request)
-    {
-        $slug = SlugService::createSlug(Slide::class, 'slug', $request->title);
-        return response()->json(['slug' => $slug]);
+        if ($slide->image) {
+            Storage::delete($slide->image);
+        }
+        
+        Slide::destroy($slide->id);
+        return redirect('/dashboard/slides')->with('success', 'Slide has been deleted!');
     }
 }
