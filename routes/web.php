@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
@@ -64,4 +65,5 @@ Route::middleware(['auth'])->group(function () {
         return view('dashboard.index');
     });
     Route::resource('/dashboard/slides', SlideController::class)->except('show');
+    Route::resource('/dashboard/services', ServiceController::class)->except('show');
 });

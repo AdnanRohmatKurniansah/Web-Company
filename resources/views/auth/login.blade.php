@@ -2,13 +2,6 @@
 
 @section('content')
 
-@if (session()->has('LoginError'))
-    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-      {{ session('LoginError') }}
-      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>
-@endif
-
 <div class="login-card">
   <h1>Log-in</h1><br>
 <form action="/auth/login" method="post">

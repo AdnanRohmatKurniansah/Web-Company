@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,9 +22,9 @@ class AuthController extends Controller
 
         if(Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/dashboard/index')->with('success', 'Login Successfuly');
+            return redirect()->intended('/dashboard/index')->with('toast_success', 'Login Successfuly');
         }
-        return back()->with('LoginError', 'Login failed');
+        return back()->with('toast_error', 'Login failed');
         
     }
     public function logout() {

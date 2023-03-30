@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Slide;
 use Illuminate\Http\Request;
+use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Storage;
 
 class SlideController extends Controller
@@ -43,7 +44,7 @@ class SlideController extends Controller
 
         Slide::create($validatedData);
 
-        return redirect('/dashboard/slides')->with('success', 'New Slide has been added!');
+        return redirect('/dashboard/slides')->with('success', 'Slide Created Successfully!');
 
     }
 
@@ -90,7 +91,7 @@ class SlideController extends Controller
         Slide::where('id', $slide->id)
              ->update($validatedData);
         
-        return redirect('/dashboard/slides')->with('success', 'Slide has been updated!');
+        return redirect('/dashboard/slides')->with('success', 'Slide Updated Successfully!');
     }
 
     /**

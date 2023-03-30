@@ -37,9 +37,9 @@
             <i class="fa-regular fa-address-card"></i>
             <span>About</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/dashboard/slides">
-            <i class="fa-solid fa-image"></i>
+    <li class="nav-item {{ Request::is('dashboard/services*') ? 'active' : '' }}">
+        <a class="nav-link" href="/dashboard/services">
+            <i class="fa-solid fa-screwdriver-wrench"></i>
             <span>Services</span></a>
     </li>
     <li class="nav-item">

@@ -7,37 +7,37 @@
 
         <div class="card mb-4">
             <div class="card-header py-3">
-                <h5 class="m-0 font-weight-bold text-primary">Edit Slide</h5>
+                <h5 class="m-0 font-weight-bold text-primary">Edit Service</h5>
             </div>
             <div class="container">
-              <form action="/dashboard/slides/{{ $slide->id }}" method="post" enctype="multipart/form-data" class="m-3">
+              <form action="/dashboard/services/{{ $service->id }}" method="post" enctype="multipart/form-data" class="m-3">
                 @method('put')
                   @csrf
                   <div class="mb-3">
-                      <label for="mainTitle" class="form-label">MainTitle</label>
-                      <input type="text" class="form-control @error('mainTitle') is-invalid @enderror" id="mainTitle" 
-                      name="mainTitle" required autofocus value="{{ old('mainTitle', $slide->mainTitle) }}">
-                      @error('mainTitle')
+                      <label for="type" class="form-label">Type</label>
+                      <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" 
+                      name="type" required autofocus value="{{ old('type', $service->type) }}">
+                      @error('type')
                           <div class="invalid-feedback">
                             {{ $message }}
                           </div>
                       @enderror
                     </div>
                   <div class="mb-3">
-                      <label for="subTitle" class="form-label">SubTitle</label>
-                      <input type="text" class="form-control @error('subTitle') is-invalid @enderror" id="subTitle" 
-                      name="subTitle" required autofocus value="{{ old('subTitle', $slide->subTitle) }}">
-                      @error('subTitle')
+                      <label for="desc" class="form-label">Description</label>
+                      <input type="text" class="form-control @error('desc') is-invalid @enderror" id="desc" 
+                      name="desc" required autofocus value="{{ old('desc', $service->desc) }}">
+                      @error('desc')
                           <div class="invalid-feedback">
                             {{ $message }}
                           </div>
                       @enderror
                     </div>
                     <div class="mb-3">
-                      <label for="image" class="form-label">Slide Image</label>
-                      <input type="hidden" name="oldImage" value="{{ $slide->image }}">
-                        @if ($slide->image)
-                          <img src="{{ asset('storage/' . $slide->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+                      <label for="image" class="form-label">Service Image</label>
+                      <input type="hidden" name="oldImage" value="{{ $service->image }}">
+                        @if ($service->image)
+                          <img src="{{ asset('storage/' . $service->image) }}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
                         @else
                           <img class="img-preview img-fluid mb-3 col-sm-5">
                         @endif
@@ -49,7 +49,7 @@
                         </div>
                     @enderror
                   </div>
-                  <button type="submit" class="btn btn-primary">Update Slide</button>
+                  <button type="submit" class="btn btn-primary">Update service</button>
                 </form> 
             </div>
 

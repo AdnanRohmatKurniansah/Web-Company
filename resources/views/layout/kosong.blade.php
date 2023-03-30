@@ -20,7 +20,7 @@
 <body>
 <div class="wrapper-main">
 	
-	
+	@include('sweetalert::alert')
     @yield('content')
 	
     
