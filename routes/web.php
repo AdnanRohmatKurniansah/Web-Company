@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\AuthController;
@@ -66,4 +68,6 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::resource('/dashboard/slides', SlideController::class)->except('show');
     Route::resource('/dashboard/services', ServiceController::class)->except('show');
+    Route::resource('/dashboard/portfolios', PortfolioController::class)->except('show');
+    Route::resource('/dashboard/abouts', AboutController::class)->except('show');
 });

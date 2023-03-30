@@ -24,7 +24,9 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        return view('dashboard.portfolios.create');
+        return view('dashboard.portfolios.create', [
+            'services' => Service::all()
+        ]);
     }
 
     /**
@@ -39,7 +41,7 @@ class PortfolioController extends Controller
         ]);  
 
         if($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('service-images');
+            $validatedData['image'] = $request->file('image')->store('portfolio-images');
         } // jika tdk ada maka gunakan image lama
 
         Portfolio::create($validatedData);
@@ -76,15 +78,23 @@ class PortfolioController extends Controller
             'projectName' => 'required|max:60',
             'service_id' => 'required',
             'image' => 'image|file|max:2048'
-        ]);  
+        ]);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validatedData['image'] = $request->file('image')->store('portfolio-images');
+        }
 
         if($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('portfolio-images');
-        } // jika tdk ada maka gunakan image lama
+        } 
 
-        Portfolio::create($validatedData);
+        Portfolio::where('id', $portfolio->id)
+             ->update($validatedData);
         
-        return redirect('/dashboard/portfolios')->with('success', 'Portfolio has been updated!');
+             return redirect('/dashboard/portfolios')->with('success', 'Portfolio has been updated!');
     }
 
     /**

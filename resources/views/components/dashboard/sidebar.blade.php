@@ -30,20 +30,30 @@
     <li class="nav-item {{ Request::is('dashboard/slides*') ? 'active' : '' }}">
         <a class="nav-link" href="/dashboard/slides">
             <i class="fa-solid fa-image"></i>
-            <span>Slides</span></a>
+            <span>Slides Page</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/dashboard/slides">
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item {{ Request::is('dashboard/abouts*') ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+            aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fa-regular fa-address-card"></i>
-            <span>About</span></a>
+            <span>About Page</span></a>
+        </a>
+        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item {{ Request::is('dashboard/abouts*') ? 'active' : '' }}" href="/dashboard/abouts">About</a>
+                <a class="collapse-item" href="utilities-border.html">Our Team</a>
+            </div>
+        </div>
     </li>
     <li class="nav-item {{ Request::is('dashboard/services*') ? 'active' : '' }}">
         <a class="nav-link" href="/dashboard/services">
             <i class="fa-solid fa-screwdriver-wrench"></i>
             <span>Services</span></a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/dashboard/slides">
+    <li class="nav-item {{ Request::is('dashboard/portfolios*') ? 'active' : '' }}">
+        <a class="nav-link" href="/dashboard/portfolios">
             <i class="fa-solid fa-image"></i>
             <span>Portfolio</span></a>
     </li>
@@ -58,24 +68,7 @@
             <span>Contact</span></a>
     </li>
 
-    <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-            aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fas fa-fw fa-wrench"></i>
-            <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar">
-            <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="utilities-color.html">Colors</a>
-                <a class="collapse-item" href="utilities-border.html">Borders</a>
-                <a class="collapse-item" href="utilities-animation.html">Animations</a>
-                <a class="collapse-item" href="utilities-other.html">Other</a>
-            </div>
-        </div>
-    </li>
+    
 
     <!-- Divider -->
     <hr class="sidebar-divider">
