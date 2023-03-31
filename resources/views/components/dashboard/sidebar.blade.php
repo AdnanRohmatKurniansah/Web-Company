@@ -57,7 +57,7 @@
             <i class="fas fa-fw fa-folder"></i>
             <span>Portfolio</span></a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ Request::is('dashboard/blogs') || Request::is('dashboard/categories') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
             <i class="fa-brands fa-blogger"></i>
@@ -65,8 +65,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <a class="collapse-item" href="">Blog</a>
-                <a class="collapse-item " href="/dashboard/categories">Blog Categories</a>
+                <a class="collapse-item {{ Request::is('dashboard/blogs*') ? 'active' : '' }}" href="/dashboard/blogs">Blog</a>
+                <a class="collapse-item {{ Request::is('dashboard/categories*') ? 'active' : '' }}" href="/dashboard/categories">Blog Categories</a>
             </div>
         </div>
     </li>

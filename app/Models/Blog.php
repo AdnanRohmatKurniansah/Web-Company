@@ -6,16 +6,16 @@ use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class Blog extends Model
 {
     use HasFactory, Sluggable;
 
     protected $guarded = ['id'];
 
-    public function blogs()
+    public function category()
     {
-        return $this->hasMany(Blog::class);
-    }// relasi ke posts
+        return $this->belongsTo(Category::class);
+    }
 
     public function getRouteKeyName()
     {
@@ -26,7 +26,7 @@ class Category extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
+                'source' => 'title'
             ]
         ];
     }

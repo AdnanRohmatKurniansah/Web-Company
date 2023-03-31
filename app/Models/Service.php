@@ -11,7 +11,7 @@ class Service extends Model
 
     protected $guarded = ['id'];
 
-    public function portfolio()
+    public function portfolios()
     {
         return $this->hasMany(Portfolio::class);
     }

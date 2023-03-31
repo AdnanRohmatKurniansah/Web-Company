@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\Slide;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
@@ -22,7 +24,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home', [
-        'title' => "Home"
+        'title' => "Home",
+        'slides' => Slide::all()
     ]);
 });
 
@@ -59,6 +62,8 @@ Route::get('/contact', function () {
 Route::prefix('auth')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/login', [AuthController::class, 'authenticate']);
+    Route::get('/change-password', [AuthController::class, 'show'])->name('change-password');
+    Route::post('/change-password', [AuthController::class, 'updatePassword'])->name('update-password');
 });
 
 Route::post('/logout', [AuthController::class, 'logout']);
@@ -75,4 +80,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/teams', TeamController::class)->except('show');
     Route::resource('/dashboard/categories', CategoryController::class)->except('show');
     Route::get('/dashboard/categories/checkSlug', [CategoryController::class, 'checkSlug']);
+    Route::resource('/dashboard/blogs', BlogController::class)->except('show');
+    Route::get('/dashboard/blogs/checkSlug', [BlogController::class, 'checkSlug']);
 });
