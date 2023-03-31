@@ -35,7 +35,7 @@ class SlideController extends Controller
         $validatedData = $request->validate([
             'mainTitle' => 'required|max:25',
             'subTitle' => 'required|max:45',
-            'image' => 'image|file|max:2048'    
+            'image' => 'image|file|max:2048'  
         ]);
 
         if ($request->file('image')) {

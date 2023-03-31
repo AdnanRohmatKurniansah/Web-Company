@@ -33,7 +33,7 @@
             <span>Slides Page</span></a>
     </li>
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item {{ Request::is('dashboard/abouts*') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('dashboard/abouts') || Request::is('dashboard/teams') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fa-regular fa-address-card"></i>
@@ -43,7 +43,7 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item {{ Request::is('dashboard/abouts*') ? 'active' : '' }}" href="/dashboard/abouts">About</a>
-                <a class="collapse-item" href="utilities-border.html">Our Team</a>
+                <a class="collapse-item {{ Request::is('dashboard/teams*') ? 'active' : '' }}" href="/dashboard/teams">Our Team</a>
             </div>
         </div>
     </li>
@@ -54,17 +54,25 @@
     </li>
     <li class="nav-item {{ Request::is('dashboard/portfolios*') ? 'active' : '' }}">
         <a class="nav-link" href="/dashboard/portfolios">
-            <i class="fa-solid fa-image"></i>
+            <i class="fas fa-fw fa-folder"></i>
             <span>Portfolio</span></a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/dashboard/slides">
-            <i class="fa-solid fa-image"></i>
-            <span>Blog Post</span></a>
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
+            aria-expanded="true" aria-controls="collapsePages">
+            <i class="fa-brands fa-blogger"></i>
+            <span>Blog Post</span>
+        </a>
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item" href="">Blog</a>
+                <a class="collapse-item " href="/dashboard/categories">Blog Categories</a>
+            </div>
+        </div>
     </li>
     <li class="nav-item">
         <a class="nav-link" href="/dashboard/slides">
-            <i class="fa-solid fa-image"></i>
+            <i class="fa-sharp fa-regular fa-comments"></i>
             <span>Contact</span></a>
     </li>
 

@@ -5,6 +5,8 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\SlideController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -70,4 +72,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('/dashboard/services', ServiceController::class)->except('show');
     Route::resource('/dashboard/portfolios', PortfolioController::class)->except('show');
     Route::resource('/dashboard/abouts', AboutController::class)->except('show');
+    Route::resource('/dashboard/teams', TeamController::class)->except('show');
+    Route::resource('/dashboard/categories', CategoryController::class)->except('show');
+    Route::get('/dashboard/categories/checkSlug', [CategoryController::class, 'checkSlug']);
 });
