@@ -23,4 +23,14 @@ class ContactController extends Controller
 
         return redirect('/contact')->with('success', 'Your message has been sent');
     }
+    public function index() {
+        return view('dashboard.contacts.index', [
+            'contacts' => Contact::all()
+        ]);
+    }
+    public function show(Contact $contact) {
+        return view('dashboard.contacts.show', [
+            'contact' => $contact
+        ]); 
+    }
 }

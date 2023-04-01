@@ -70,8 +70,8 @@
             </div>
         </div>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="/dashboard/slides">
+    <li class="nav-item {{ Request::is('dashboard/contacts*') ? 'active' : '' }}">
+        <a class="nav-link" href="/dashboard/contacts">
             <i class="fa-sharp fa-regular fa-comments"></i>
             <span>Contact</span></a>
     </li>

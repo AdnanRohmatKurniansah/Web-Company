@@ -59,6 +59,10 @@ Route::get('/blog', function () {
 Route::get('/contact', [ContactController::class, 'create']);
 Route::post('/contact', [ContactController::class, 'store']);
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard/contacts', [ContactController::class, 'index']);
+    Route::get('/dashboard/contacts/{contact:id}', [ContactController::class, 'show']);
+});
 
 Route::prefix('auth')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -68,7 +72,6 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::post('/logout', [AuthController::class, 'logout']);
-
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/index', function () {
