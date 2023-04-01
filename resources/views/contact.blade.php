@@ -24,26 +24,35 @@
 			<!-- Map Column -->
 				<div class="col-lg-8 mb-4 contact-left">
 					<h3>Send us a Message</h3>
-					<form name="sentMessage" id="contactForm" novalidate>
+					<form action="" method="post" name="sentMessage" id="contactForm" novalidate>
+						@csrf
 						<div class="control-group form-group">
 							<div class="controls">
-								<input type="text" placeholder="Full Name" class="form-control" id="name" required data-validation-required-message="Please enter your name.">
+								<input type="text" placeholder="Full Name" name="name" class="form-control @error('name') is-invalid @enderror" id="name" required data-validation-required-message="Please enter your name." value="{{ old('name') }}">
 								<p class="help-block"></p>
+								@error('name')
+								<div class="invalid-feedback">
+								  {{ $message }}
+								</div>
+							@enderror
 							</div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
-								<input type="tel" placeholder="Phone Number" class="form-control" id="phone" required data-validation-required-message="Please enter your phone number.">
+								<input type="email" placeholder="Email Address" name="email" class="form-control @error('email') is-invalid @enderror" id="email" required value="{{ old('email') }}" data-validation-required-message="Please enter your email address.">
+								@error('email')
+									<div class="invalid-feedback">
+										{{ $message }}
+									</div>
+								@enderror
 							</div>
 						</div>
 						<div class="control-group form-group">
 							<div class="controls">
-								<input type="email" placeholder="Email Address" class="form-control" id="email" required data-validation-required-message="Please enter your email address.">
-							</div>
-						</div>
-						<div class="control-group form-group">
-							<div class="controls">
-								<textarea rows="5" cols="100" placeholder="Message" class="form-control" id="message" required data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+								<textarea rows="5" cols="100" placeholder="Message" name="message" class="form-control" id="message" required value="{{ old('message') }}"data-validation-required-message="Please enter your message" maxlength="999" style="resize:none"></textarea>
+								@error('message')
+									<p class="text-danger">{{ $message }}</p>
+								@enderror
 							</div>
 						</div>
 						<div id="success"></div>

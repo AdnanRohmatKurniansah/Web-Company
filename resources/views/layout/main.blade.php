@@ -21,7 +21,7 @@
 <div class="wrapper-main">
 	
     @include('components.topnav')
-	
+	@include('sweetalert::alert')
     @yield('content')
 	
     <!-- /.container -->

@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Contact;
 use App\Models\Slide;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PortfolioController;
@@ -8,6 +9,7 @@ use App\Http\Controllers\SlideController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\TeamController;
 use Illuminate\Support\Facades\Route;
 
@@ -52,11 +54,10 @@ Route::get('/blog', function () {
         'title' => "Blog"
     ]);
 });
-Route::get('/contact', function () {
-    return view('contact', [
-        'title' => "Contact"
-    ]);
-});
+
+
+Route::get('/contact', [ContactController::class, 'create']);
+Route::post('/contact', [ContactController::class, 'store']);
 
 
 Route::prefix('auth')->group(function () {
@@ -71,7 +72,9 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/index', function () {
-        return view('dashboard.index');
+        return view('dashboard.index', [
+            'contacts' => Contact::all()
+        ]);
     });
     Route::resource('/dashboard/slides', SlideController::class)->except('show');
     Route::resource('/dashboard/services', ServiceController::class)->except('show');

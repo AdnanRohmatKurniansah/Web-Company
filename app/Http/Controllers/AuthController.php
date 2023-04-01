@@ -42,20 +42,20 @@ class AuthController extends Controller
         return view('auth.update-password');
     }
     public function updatePassword(Request $request) {
-        # Validation
+        //validation
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|confirmed',
         ]);
 
 
-        #Match The Old Password
+        //match The Old Password
         if(!Hash::check($request->old_password, auth()->user()->password)){
             return back()->with('toast_error', "Old Password Doesn't match!");
         }
 
 
-        #Update the new Password
+        //update the new Password
         User::whereId(auth()->user()->id)->update([
             'password' => Hash::make($request->new_password)
         ]);
