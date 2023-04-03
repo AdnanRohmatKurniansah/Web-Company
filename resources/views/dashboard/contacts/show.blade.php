@@ -1,4 +1,4 @@
-{{-- @extends('layout.dashboard')
+@extends('layout.dashboard')
 
 @section('content')
     <div class="row">
@@ -10,12 +10,17 @@
                     <h5 class="m-0 font-weight-bold text-primary">Detail Message</h5>
                 </div>
                 <div class="card-body">
-                    <p>{{ $contact->name }}</p>
-                    <p>{{ $contact->email }}</p>
-                    <p>{{ $contact->message }}</p>
+                    <ul class="list-unstyled">
+                        <li><b>From :</b> <p>{{ $contact->name }}</p></li>
+                        <li><b>Message :</b> <p>{{ $contact->message }}</p></li>
+                        <li><b>Email :</b> <p>{{ $contact->email }}</p></li>
+                    </ul>
+                </div>
+                <div class="col-lg-3">
+                    <a href="/dashboard/contacts" class="btn btn-primary my-2">Back</a>
                 </div>
             </div>
         </div>
     </div>
 
-@endsection --}}
+@endsection

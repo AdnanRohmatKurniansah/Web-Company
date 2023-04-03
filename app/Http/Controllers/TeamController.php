@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Team;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
@@ -14,7 +15,8 @@ class TeamController extends Controller
     public function index()
     {
         return view('dashboard.teams.index', [
-            'teams' => Team::all()
+            'teams' => Team::all(), 
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -23,7 +25,9 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('dashboard.teams.create');
+        return view('dashboard.teams.create', [
+            'messages' => Contact::where('status', 'unread')->get()
+        ]);
     }
 
     /**
@@ -34,6 +38,10 @@ class TeamController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:50',
             'profession' => 'required|max:80',
+            'linkFB' => 'required',
+            'linkGoogle' => 'required',
+            'linkTwitter' => 'required',
+            'linkLinkedln' => 'required',
             'image' => 'image|file|max:2048'  
         ]);
 
@@ -60,7 +68,8 @@ class TeamController extends Controller
     public function edit(Team $team)
     {
         return view('dashboard.teams.edit', [
-            'team' => $team
+            'team' => $team,
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -72,6 +81,10 @@ class TeamController extends Controller
         $validatedData = $request->validate([
             'name' => 'required|max:50',
             'profession' => 'required|max:80',
+            'linkFB' => 'required',
+            'linkGoogle' => 'required',
+            'linkTwitter' => 'required',
+            'linkLinkedln' => 'required',
             'image' => 'image|file|max:2048'  
         ]);
 

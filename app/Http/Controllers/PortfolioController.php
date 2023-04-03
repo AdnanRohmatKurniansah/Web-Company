@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Portfolio;
 use App\Models\Service;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,8 @@ class PortfolioController extends Controller
     public function index()
     {
         return view('dashboard.portfolios.index', [
-            "portfolios" => Portfolio::all()
+            "portfolios" => Portfolio::all(),
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -25,7 +27,8 @@ class PortfolioController extends Controller
     public function create()
     {
         return view('dashboard.portfolios.create', [
-            'services' => Service::all()
+            'services' => Service::all(), 
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -64,7 +67,8 @@ class PortfolioController extends Controller
     {
         return view('dashboard.portfolios.edit', [
             'portfolio' => $portfolio,
-            'services' => Service::all()
+            'services' => Service::all(),
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
 
     }

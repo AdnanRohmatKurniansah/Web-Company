@@ -15,6 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('profession');
+            $table->text('linkFB');
+            $table->text('linkGoogle');
+            $table->text('linkTwitter');
+            $table->text('linkLinkedln');
             $table->text('image')->nullable();
             $table->timestamps();
         });

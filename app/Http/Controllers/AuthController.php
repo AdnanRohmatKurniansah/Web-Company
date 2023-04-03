@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -39,7 +40,9 @@ class AuthController extends Controller
         return redirect('/');
     }
     public function show() {
-        return view('auth.update-password');
+        return view('auth.update-password', [
+            'messages' => Contact::where('status', 'unread')->get()
+        ]);
     }
     public function updatePassword(Request $request) {
         //validation

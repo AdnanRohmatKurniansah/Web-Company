@@ -62,6 +62,7 @@ Route::post('/contact', [ContactController::class, 'store']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/contacts', [ContactController::class, 'index']);
     Route::get('/dashboard/contacts/{contact:id}', [ContactController::class, 'show']);
+    Route::delete('/dashboard/contacts/{contact:id}', [ContactController::class, 'destroy']);
 });
 
 Route::prefix('auth')->group(function () {
@@ -76,7 +77,7 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/index', function () {
         return view('dashboard.index', [
-            'contacts' => Contact::all()
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     });
     Route::resource('/dashboard/slides', SlideController::class)->except('show');

@@ -30,6 +30,46 @@
                           </div>
                       @enderror
                     </div>
+                  <div class="mb-3">
+                      <label for="linkFB" class="form-label">Link Facebook</label>
+                      <input type="text" class="form-control @error('linkFB') is-invalid @enderror" id="linkFB" 
+                      name="linkFB" required autofocus value="{{ old('linkFB') }}">
+                      @error('linkFB')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                      @enderror
+                    </div>
+                  <div class="mb-3">
+                      <label for="linkGoogle" class="form-label">Link Google</label>
+                      <input type="text" class="form-control @error('linkGoogle') is-invalid @enderror" id="linkGoogle" 
+                      name="linkGoogle" required autofocus value="{{ old('linkGoogle') }}">
+                      @error('linkGoogle')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                      @enderror
+                    </div>
+                  <div class="mb-3">
+                      <label for="linkTwitter" class="form-label">Link Twitter</label>
+                      <input type="text" class="form-control @error('linkTwitter') is-invalid @enderror" id="linkTwitter" 
+                      name="linkTwitter" required autofocus value="{{ old('linkTwitter') }}">
+                      @error('linkTwitter')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                      @enderror
+                    </div>
+                  <div class="mb-3">
+                      <label for="linkLinkedln" class="form-label">Link Linkedln</label>
+                      <input type="text" class="form-control @error('linkLinkedln') is-invalid @enderror" id="linkLinkedln" 
+                      name="linkLinkedln" required autofocus value="{{ old('linkLinkedln') }}">
+                      @error('linkLinkedln')
+                          <div class="invalid-feedback">
+                            {{ $message }}
+                          </div>
+                      @enderror
+                    </div>
                     <div class="mb-3">
                       <label for="image" class="form-label">Team Image</label>
                       <img class="img-preview img-fluid mb-3 col-sm-5">
@@ -41,7 +81,7 @@
                         </div>
                     @enderror
                   </div>
-                  <button type="submit" class="btn btn-primary">Create Slide</button>
+                  <button type="submit" class="btn btn-primary">Create Team</button>
                 </form> 
         </div>
     </div>

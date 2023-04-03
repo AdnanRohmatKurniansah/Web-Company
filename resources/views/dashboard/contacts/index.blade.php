@@ -16,16 +16,21 @@
                             <th scope="col">#</th>
                             <th scope="col">Name</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Status</th>
                             <th scope="col">Action </th>
                           </tr>
                         </thead>
                         <tbody>
                           @foreach ($contacts as $contact)
-                            
+                            @php
+                                $status = $contact->status;
+                                $class = $status == 'read' ? 'bg-success text-light' : 'bg-danger text-light';
+                            @endphp
                           <tr>
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $contact->name }}</td>
                             <td>{{ $contact->email }}</td>
+                            <td class="{{ $class }}">{{ $contact->status }}</td>
                             <td class="d-flex">
                                 <a href="/dashboard/contacts/{{ $contact->id }}" class="badge bg-info mr-1" style="font-size: 18px"><i class="fa-solid fa-eye"></i></a>
                                 <form action="/dashboard/contacts/{{ $contact->id }}" method="post">

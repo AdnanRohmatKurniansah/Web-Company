@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use App\Models\Category;
+use App\Models\Contact;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -18,8 +19,8 @@ class BlogController extends Controller
     public function index()
     {
         return view('dashboard.blogs.index', [
-
-            "blogs" =>  Blog::all()
+            "blogs" =>  Blog::all(),
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -29,7 +30,8 @@ class BlogController extends Controller
     public function create()
     {
         return view('dashboard.blogs.create', [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -73,7 +75,8 @@ class BlogController extends Controller
     {
         return view('dashboard.blogs.edit', [
             'blog' => $blog,
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 

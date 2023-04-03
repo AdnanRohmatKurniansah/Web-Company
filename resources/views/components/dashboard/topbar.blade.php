@@ -55,7 +55,12 @@
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <i class="fas fa-envelope fa-fw"></i>
                 <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">{{ $contacts->count() }}</span>
+                @if ($messages->isEmpty())
+                    <span class="badge badge-danger badge-counter"></span>
+                @else
+                    <span class="badge badge-danger badge-counter">{{ $messages->count() }}</span>
+                @endif  
+
             </a>
             <!-- Dropdown - Messages -->
             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -63,22 +68,25 @@
                 <h6 class="dropdown-header">
                     Message Center
                 </h6>
-                @foreach ($contacts as $contact)
-                    
-                <a class="dropdown-item d-flex align-items-center" href="#">
+                @foreach ($messages as $message)
+                <a class="dropdown-item d-flex align-items-center" href="/dashboard/contacts/{{ $message->id }}">
                     <div class="dropdown-list-image mr-3">
-                        <img class="rounded-circle" src="img/undraw_profile_1.svg"
+                        <img class="rounded-circle" src="/assets/images/profile/blank.png"
                             alt="...">
                         <div class="status-indicator bg-success"></div>
                     </div>
                     <div class="font-weight-bold">
-                        <div class="text-truncate">{{ $contact->message }}</div>
-                        <div class="small text-gray-500">{{ $contact->name }} · {{ $contact->created_at->diffForHumans() }}</div>
+                        <div class="text-truncate">{{ $message->message }}</div>
+                        <div class="small text-gray-500">{{ $message->name }} · {{ $message->created_at->diffForHumans() }}</div>
                     </div>
                 </a>
                 @endforeach
                 
-                <a class="dropdown-item text-center small text-gray-500" href="/dashboard/contacts">Read More Messages</a>
+                @if ($messages->isEmpty())
+                    <a class="dropdown-item text-center small text-gray-500" disabled>No Message Found</a>
+                @else
+                    <a class="dropdown-item text-center small text-gray-500" href="/dashboard/contacts">Read More Messages</a>
+                @endif
             </div>
         </li>
 
@@ -88,9 +96,9 @@
         <li class="nav-item dropdown no-arrow">
             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                 <img class="img-profile rounded-circle"
-                    src="img/undraw_profile.svg">
+                    src="/assets/images/profile/admin.png">
             </a>
             <!-- Dropdown - User Information -->
             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -101,11 +109,7 @@
                 </a>
                 <a class="dropdown-item" href="{{ route('change-password') }}">
                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                    <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                    Activity Log
+                    Change Password
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">

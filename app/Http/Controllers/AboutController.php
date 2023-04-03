@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class AboutController extends Controller
     public function index()
     {
         return view('dashboard.abouts.index', [
-            "abouts" =>  About::all()
+            "abouts" =>  About::all(),
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -23,7 +25,9 @@ class AboutController extends Controller
      */
     public function create()
     {
-        return view('dashboard.abouts.create');
+        return view('dashboard.abouts.create', [
+            'messages' => Contact::where('status', 'unread')->get()
+        ]);
     }
 
     /**
@@ -60,7 +64,8 @@ class AboutController extends Controller
     public function edit(About $about)
     {
         return view('dashboard.abouts.edit', [
-            'about' => $about
+            'about' => $about,
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Slide;
 use Illuminate\Http\Request;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Storage;
 
 class SlideController extends Controller
@@ -15,7 +15,8 @@ class SlideController extends Controller
     public function index()
     {
         return view('dashboard.slides.index', [
-            'slides' => Slide::all()
+            'slides' => Slide::all(), 
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -24,7 +25,9 @@ class SlideController extends Controller
      */
     public function create()
     {
-        return view('dashboard.slides.create');
+        return view('dashboard.slides.create', [
+            'messages' => Contact::where('status', 'unread')->get()
+        ]);
     }
 
     /**
@@ -62,7 +65,8 @@ class SlideController extends Controller
     public function edit(Slide $slide)
     {
         return view('dashboard.slides.edit', [
-            'slide' => $slide
+            'slide' => $slide,
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 

@@ -25,12 +25,23 @@ class ContactController extends Controller
     }
     public function index() {
         return view('dashboard.contacts.index', [
+            'messages' => Contact::where('status', 'unread')->get(),
             'contacts' => Contact::all()
         ]);
     }
-    public function show(Contact $contact) {
+    public function show($id) {
+        
+        $contact = Contact::findOrFail($id);
+        $contact->update(['status' => 'read']);
+
         return view('dashboard.contacts.show', [
-            'contact' => $contact
+            'contact' => $contact,
+            'messages' => Contact::where('status', 'unread')->get()
         ]); 
+    }
+    public function destroy(Contact $contact)
+    {
+        Contact::destroy($contact->id);
+        return redirect('/dashboard/contacts')->with('success', 'Message has been deleted!');
     }
 }

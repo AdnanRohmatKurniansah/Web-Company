@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Contact;
 use App\Models\Service;
-use RealRashid\SweetAlert\Facades\Alert;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
@@ -15,7 +15,8 @@ class ServiceController extends Controller
     public function index()
     {
         return view('dashboard.services.index', [
-            "services" => Service::all()
+            "services" => Service::all(),
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -24,7 +25,10 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('dashboard.services.create');
+        return view('dashboard.services.create', [
+            'messages' => Contact::where('status', 'unread')->get()
+            
+        ]);
     }
 
     /**
@@ -61,7 +65,8 @@ class ServiceController extends Controller
     public function edit(Service $service)
     {
         return view('dashboard.services.edit', [
-            'service' => $service
+            'service' => $service,
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 

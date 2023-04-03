@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Contact;
 use Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class CategoryController extends Controller
     public function index()
     {
         return view('dashboard.categories.index', [
-            'categories' => Category::all()
+            'categories' => Category::all(),
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
@@ -23,7 +25,9 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('dashboard.categories.create');
+        return view('dashboard.categories.create', [
+            'messages' => Contact::where('status', 'unread')->get()
+        ]);
     }
 
     /**
@@ -55,7 +59,8 @@ class CategoryController extends Controller
     public function edit(Category $category)
     {
         return view('dashboard.categories.edit', [
-            'category' => $category
+            'category' => $category, 
+            'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
 
