@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Slide;
 use App\Http\Controllers\AboutController;
@@ -51,7 +52,9 @@ Route::get('/portfolio', function () {
 
 Route::get('/blog', function () {
     return view('blog', [
-        'title' => "Blog"
+        'title' => "Blog",
+        'blogs' => Blog::latest()->filter(request(['search', 'category']))
+        ->paginate(3)->withQueryString()
     ]);
 });
 

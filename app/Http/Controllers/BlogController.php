@@ -109,7 +109,7 @@ class BlogController extends Controller
             $validatedData['image'] = $request->file('image')->store('blog-images');
         } 
         
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Blog::where('id', $blog->id)
              ->update($validatedData);
