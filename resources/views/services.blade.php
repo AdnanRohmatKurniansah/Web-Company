@@ -14,7 +14,7 @@
 					<li class="breadcrumb-item active">Services</li>
 				</ol>
 			</div>
-		</div>
+		</div>	
 	</div>
 	
     <!-- Page Content -->
@@ -27,72 +27,19 @@
 			<h1 class="py-4">Our Best Services </h1>
 			<!-- Services Section -->
 			<div class="row">
-			   <div class="col-lg-4 mb-4">
-					<div class="card h-100">
-						<div class="card-img">
-							<img class="img-fluid" src="/assets/images/services-img-01.jpg" alt="" />
-						</div>
-						<div class="card-body">
-							<h4 class="card-header"> Analytics </h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-						</div>
-					</div>
-			   </div>
-			   <div class="col-lg-4 mb-4">
-					<div class="card h-100">
-						<div class="card-img">
-							<img class="img-fluid" src="/assets/images/services-img-02.jpg" alt="" />
-						</div>
-						<div class="card-body">
-							<h4 class="card-header"> Applications </h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+				@foreach ($services as $service)
+					<div class="col-lg-4 mb-4">
+						<div class="card h-100">
+							<div class="card-img">
+								<img class="img-fluid" src="{{ asset('storage/' . $service->image) }}" alt="" />
+							</div>
+							<div class="card-body">
+								<h4 class="card-header">{{ $service->type }}</h4>
+								<p class="card-text">{{ $service->desc }}</p>
+							</div>
 						</div>
 					</div>
-			   </div>
-			   <div class="col-lg-4 mb-4">
-					<div class="card h-100">
-						<div class="card-img">
-							<img class="img-fluid" src="/assets/images/services-img-03.jpg" alt="" />
-						</div>
-						<div class="card-body">
-							<h4 class="card-header"> Business Process </h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-						</div>
-					</div>
-			   </div>
-			   <div class="col-lg-4 mb-4">
-					<div class="card h-100">
-						<div class="card-img">
-							<img class="img-fluid" src="/assets/images/services-img-04.jpg" alt="" />
-						</div>
-						<div class="card-body">
-							<h4 class="card-header"> Consulting </h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-						</div>						
-					</div>
-			   </div>
-			   <div class="col-lg-4 mb-4">
-					<div class="card h-100">
-						<div class="card-img">
-							<img class="img-fluid" src="/assets/images/services-img-05.jpg" alt="" />
-						</div>
-						<div class="card-body">
-							<h4 class="card-header"> Infrastructure </h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-						</div>						
-					</div>
-			   </div>
-			   <div class="col-lg-4 mb-4">
-					<div class="card h-100">
-						<div class="card-img">
-							<img class="img-fluid" src="/assets/images/services-img-06.jpg" alt="" />
-						</div>
-						<div class="card-body">
-							<h4 class="card-header"> Product Engineering </h4>
-							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
-						</div>
-					</div>
-			   </div>
+				@endforeach
 			</div>
 			<!-- /.row -->
 		</div>

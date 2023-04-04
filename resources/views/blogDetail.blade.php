@@ -23,8 +23,6 @@
 				<!-- Blog Entries Column -->
 				<div class="col-md-8 blog-entries">
 					<!-- Blog Post -->
-					@if ($blogs->count())
-						@foreach ($blogs as $blog)	
 						<div class="card mb-4">
 							<img class="card-img-top" src="{{ asset('storage/' . $blog->image) }}" alt="Card image Blog" />
 							<div class="card-body">
@@ -32,22 +30,10 @@
 									Posted on {{ $blog->created_at->format('d, M Y') }} . <a href="/blog?category={{ $blog->category->slug }}">{{ $blog->category->name }}</a>
 								</div>
 								<h2 class="card-title">{{ $blog->title }}</h2>
-								<p class="card-text">{{ $blog->excerpt }}</p>
-								<a href="/blog/{{ $blog->slug }}" class="btn btn-primary">Continue &rarr;</a>
+								<p class="card-text">{!! $blog->body !!}</p>
 							</div>
 						</div>
-					@endforeach
-					@else
-					<div class="404">
-						<div class="d-flex align-items-center justify-content-center mt-5" style="text-align: center"><h1 style="margin-top: 120px; font-weight: 600">Blog Not Found</h1>
-						</div>
-					</div>
-					@endif
-					
-					<div class="d-flex justify-content-center">
-						{{ $blogs->links() }}
-						</div>
-					</div>
+				</div>
 				<!-- Sidebar Widgets Column -->
 				<div class="col-md-4 blog-right-side">
 					<!-- Search Widget -->
@@ -78,15 +64,15 @@
 							<div class="row">
 								<div class="col-lg-6">
 									<ul class="list-unstyled mb-0">
-										@foreach ($categories as $category)
-											<li><a href="/blog?category={{ $category->slug }}">{{ $category->name }}</a></li>
+										@foreach ($blogs as $blog)
+											<li><a href="/blog?category={{ $blog->category->slug }}">{{ $blog->category->name }}</a></li>
 										@endforeach
 									</ul>
 								</div>
 								<div class="col-lg-6">
 									<ul class="list-unstyled mb-0">
-										@foreach ($categories->skip(6) as $category)
-											<li><a href="/blog?category={{ $category->slug }}">{{ $category->name }}</a></li>
+										@foreach ($blogs->skip(6) as $blog)
+											<li><a href="/blog?category={{ $blog->category->slug }}">{{ $blog->category->name }}</a></li>
 										@endforeach
 									</ul>
 								</div>

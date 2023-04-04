@@ -19,7 +19,7 @@ class AuthController extends Controller
 
     public function authenticate(Request $request) {
         $credentials = $request->validate([
-            'email' => 'required|email',
+            'username' => 'required',
             'password' => 'required'
         ]);
 
@@ -64,5 +64,29 @@ class AuthController extends Controller
         ]);
 
         return back()->with('toast_success', "Password changed successfully!");
+    }
+    public function register() {
+        return view('auth.register', [
+            'messages' => Contact::where('status', 'unread')->get() 
+        ]);
+    }
+    public function store(Request $request) {
+        $validatedData = $request->validate([
+            'name' => 'required|max:255',
+            'username' => ['required', 'min:3', 'max:255', 'unique:users'],
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:5|max:255' 
+        ]);
+
+        //$validatedData['password'] = bcrypt($validatedData['password']);
+
+        $validatedData['password'] = Hash::make($validatedData['password']);
+        // pake metode hash yg sudah tersedia (sama seperti bcrypt )
+        
+        User::create($validatedData);
+        
+        //$request->session()->flash('success', 'Registration successfull! Please login ');
+        
+        return redirect('/dashboard/index')->with('success', 'New admin added successfully');
     }
 }

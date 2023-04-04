@@ -30,7 +30,7 @@
     <li class="nav-item {{ Request::is('dashboard/slides*') ? 'active' : '' }}">
         <a class="nav-link" href="/dashboard/slides">
             <i class="fa-solid fa-image"></i>
-            <span>Slides Page</span></a>
+            <span>Slides</span></a>
     </li>
     <!-- Nav Item - Utilities Collapse Menu -->
     <li class="nav-item {{ Request::is('dashboard/abouts') || Request::is('dashboard/teams') ? 'active' : '' }}">

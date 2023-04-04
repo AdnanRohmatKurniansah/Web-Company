@@ -1,8 +1,13 @@
 <?php
 
+use App\Models\About;
 use App\Models\Blog;
+use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Portfolio;
+use App\Models\Service;
 use App\Models\Slide;
+use App\Models\Team;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\ServiceController;
@@ -28,33 +33,50 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home', [
         'title' => "Home",
-        'slides' => Slide::all()
+        'slides' => Slide::all(),
+        'abouts' => About::all(),
+        'services' => Service::all(),
+        'portfolios' => Portfolio::latest()->paginate(6),
+        'blogs' => Blog::all()
     ]);
 });
 
 Route::get('/about', function () {
     return view('about', [
-        'title' => "About"
+        'title' => "About",
+        'abouts' => About::all(),
+        'teams' => Team::all()
     ]);
 });
 
 Route::get('/services', function () {
     return view('services', [
-        'title' => "Services"
+        'title' => "Services",
+        'services' => Service::all()
     ]);
 });
 
 Route::get('/portfolio', function () {
     return view('portfolio', [
-        'title' => "Portfolio"
+        'title' => "Portfolio",
+        'portfolios' => Portfolio::latest()->paginate(6)
     ]);
 });
 
 Route::get('/blog', function () {
     return view('blog', [
         'title' => "Blog",
-        'blogs' => Blog::latest()->filter(request(['search', 'category']))
-        ->paginate(3)->withQueryString()
+        'blogs' => Blog::latest()->with('category')->filter(request(['search', 'category']))
+        ->paginate(3)->withQueryString(),
+        'categories' => Category::all()
+    ]);
+});
+
+Route::get('/blog/{blog:slug}', function (Blog $blog) {
+    return view('blogDetail', [
+        'title' => "Blog Detail",
+        'blogs' => Blog::all(),
+        'blog' => $blog
     ]);
 });
 
@@ -62,20 +84,12 @@ Route::get('/blog', function () {
 Route::get('/contact', [ContactController::class, 'create']);
 Route::post('/contact', [ContactController::class, 'store']);
 
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard/contacts', [ContactController::class, 'index']);
-    Route::get('/dashboard/contacts/{contact:id}', [ContactController::class, 'show']);
-    Route::delete('/dashboard/contacts/{contact:id}', [ContactController::class, 'destroy']);
-});
 
 Route::prefix('auth')->group(function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/login', [AuthController::class, 'authenticate']);
-    Route::get('/change-password', [AuthController::class, 'show'])->name('change-password');
-    Route::post('/change-password', [AuthController::class, 'updatePassword'])->name('update-password');
 });
 
-Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/index', function () {
@@ -83,6 +97,19 @@ Route::middleware(['auth'])->group(function () {
             'messages' => Contact::where('status', 'unread')->get()
         ]);
     });
+
+    Route::get('/dashboard/contacts', [ContactController::class, 'index']);
+    Route::get('/dashboard/contacts/{contact:id}', [ContactController::class, 'show']);
+    Route::delete('/dashboard/contacts/{contact:id}', [ContactController::class, 'destroy']);
+
+    Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::get('/dashboard/change-password', [AuthController::class, 'show'])->name('change-password');
+    Route::post('dashboard/change-password', [AuthController::class, 'updatePassword'])->name('update-password');
+    Route::get('/dashboard/register', [AuthController::class, 'register'])->name('add-admin');
+    Route::post('/dashboard/register', [AuthController::class, 'store'])->name('create-admin');
+
+
     Route::resource('/dashboard/slides', SlideController::class)->except('show');
     Route::resource('/dashboard/services', ServiceController::class)->except('show');
     Route::resource('/dashboard/portfolios', PortfolioController::class)->except('show');

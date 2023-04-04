@@ -41,7 +41,7 @@
                         </div>
                     @enderror
                   </div>
-                  <button type="submit" class="btn btn-primary">Create Slide</button>
+                  <button type="submit" class="btn btn-primary">Create service</button>
                 </form> 
         </div>
     </div>

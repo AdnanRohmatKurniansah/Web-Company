@@ -6,8 +6,9 @@
   <h1>Log-in</h1><br>
 <form action="/auth/login" method="post">
   @csrf
-  <input id="email" class="@error('email') is-invalid @enderror" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
-  @error('email')
+  <input id="username" class="@error('username') is-invalid @enderror" type="text" name="username" placeholder="Username" value="{{ old('username') }}" required style="height: 44px;
+  font-size: 16px; width: 100%; margin-bottom: 10px; -webkit-appearance: none; background: #fff; border: 1px solid #d9d9d9; border-top: 1px solid #c0c0c0; padding: 0 8px; box-sizing: border-box; -moz-box-sizing: border-box;">
+  @error('username')
       <div class="invalid-feedback">
         {{ $message }}
       </div>
