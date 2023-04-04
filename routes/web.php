@@ -94,7 +94,11 @@ Route::prefix('auth')->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/index', function () {
         return view('dashboard.index', [
-            'messages' => Contact::where('status', 'unread')->get()
+            'messages' => Contact::where('status', 'unread')->get(),
+            'portfolios' => Portfolio::all(),
+            'services' => Service::all(),
+            'blogs' => Blog::all(),
+            'teams' => Team::all()
         ]);
     });
 

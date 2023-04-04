@@ -18,12 +18,12 @@
                 <h5 class="headin5_amrc col_white_amrc pt2">Quick links</h5>
                 <!--headin5_amrc-->
                 <ul class="footer_ul_amrc">
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Default Version</a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Boxed Version</a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Our Team </a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>About Us</a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Our Services</a></li>
-                    <li><a href="#"><i class="fas fa-long-arrow-alt-right"></i>Get In Touch</a></li>
+                    <li><a href="/"><i class="fas fa-long-arrow-alt-right"></i>Home</a></li>
+                    <li><a href="/about"><i class="fas fa-long-arrow-alt-right"></i>About</a></li>
+                    <li><a href="/services"><i class="fas fa-long-arrow-alt-right"></i>Services</a></li>
+                    <li><a href="/portfolio"><i class="fas fa-long-arrow-alt-right"></i>Portfolio</a></li>
+                    <li><a href="/blog"><i class="fas fa-long-arrow-alt-right"></i>Blog</a></li>
+                    <li><a href="/contact"><i class="fas fa-long-arrow-alt-right"></i>Contact</a></li>
                 </ul>
                 <!--footer_ul_amrc ends here-->
             </div>
