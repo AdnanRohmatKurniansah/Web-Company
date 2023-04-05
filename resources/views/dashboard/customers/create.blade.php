@@ -5,33 +5,23 @@
 
     <div class="card mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">Add New Service</h5>
+            <h5 class="m-0 font-weight-bold text-primary">Add New Customer</h5>
         </div>
         <div class="container">
-            <form action="/dashboard/services" method="post" enctype="multipart/form-data" class="m-3">
+            <form action="/dashboard/customers" method="post" enctype="multipart/form-data" class="m-3">
                   @csrf
                   <div class="mb-3">
-                      <label for="type" class="form-label">Type</label>
-                      <input type="text" class="form-control @error('type') is-invalid @enderror" id="type" 
-                      name="type" required autofocus value="{{ old('type') }}">
-                      @error('type')
-                          <div class="invalid-feedback">
-                            {{ $message }}
-                          </div>
-                      @enderror
-                    </div>
-                  <div class="mb-3">
-                      <label for="desc" class="form-label">Description</label>
-                      <input type="text" class="form-control @error('desc') is-invalid @enderror" id="desc" 
-                      name="desc" required autofocus value="{{ old('desc') }}">
-                      @error('desc')
+                      <label for="imgName" class="form-label">Image Name</label>
+                      <input type="text" class="form-control @error('imgName') is-invalid @enderror" id="imgName" 
+                      name="imgName" required autofocus value="{{ old('imgName') }}">
+                      @error('imgName')
                           <div class="invalid-feedback">
                             {{ $message }}
                           </div>
                       @enderror
                     </div>
                     <div class="mb-3">
-                      <label for="image" class="form-label">Service Image</label>
+                      <label for="image" class="form-label">Customer Image</label>
                       <img class="img-preview img-fluid mb-3 col-sm-5">
                     <input class="form-control @error('image') is-invalid @enderror" type="file" id="image"
                       name="image" onchange="previewImage()">
@@ -41,7 +31,7 @@
                         </div>
                     @enderror
                   </div>
-                  <button type="submit" class="btn btn-primary">Create service</button>
+                  <button type="submit" class="btn btn-primary">Create Customer</button>
                 </form> 
         </div>
     </div>

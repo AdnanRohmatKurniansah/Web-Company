@@ -48,7 +48,7 @@ class ServiceController extends Controller
 
         Service::create($validatedData);
 
-        return redirect('/dashboard/services')->with('success', 'Service Created Successfully!');
+        return redirect('/dashboard/services')->with('success', 'New Service has been added!');
     }
 
     /**

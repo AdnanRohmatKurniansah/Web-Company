@@ -52,24 +52,11 @@
 			<div class="row">
 				<div class="col-lg-12">
 					<div id="customers-slider" class="owl-carousel">
-						<div class="mb-4">
-							<img class="img-fluid" src="/assets/images/logo_01.png" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/assets/images/logo_02.png" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/assets/images/logo_03.png" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/assets/images/logo_04.png" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/assets/images/logo_05.png" alt="" />
-						</div>
-						<div class="mb-4">
-							<img class="img-fluid" src="/assets/images/logo_06.png" alt="" />
-						</div>
+						@foreach ($customers as $customer)	
+							<div class="mb-4">
+								<img class="img-fluid" src="{{ asset('storage/' . $customer->image) }}" alt="{{ $customer->imgName }}" />
+							</div>
+						@endforeach
 					</div>
 				</div>
 			</div>

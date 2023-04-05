@@ -10,7 +10,7 @@
                     <h5 class="m-0 font-weight-bold text-primary">Blogs</h5>
                 </div>
                 <div class="card-body">
-                    <a href="/dashboard/blogs/create" class="btn btn-primary my-2">Create new blog</a>
+                    <a href="/dashboard/blogs/create" class="btn btn-primary my-2">Add new blog</a>
                     <table class="table">
                         <thead>
                           <tr>

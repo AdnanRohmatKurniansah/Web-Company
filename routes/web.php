@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\CustomerController;
 use App\Models\About;
 use App\Models\Blog;
 use App\Models\Category;
 use App\Models\Contact;
+use App\Models\Customer;
 use App\Models\Portfolio;
 use App\Models\Service;
 use App\Models\Slide;
@@ -45,14 +47,16 @@ Route::get('/about', function () {
     return view('about', [
         'title' => "About",
         'abouts' => About::all(),
-        'teams' => Team::all()
+        'teams' => Team::all(), 
+        'customers' => Customer::all()
     ]);
 });
 
 Route::get('/services', function () {
     return view('services', [
         'title' => "Services",
-        'services' => Service::all()
+        'services' => Service::all(),
+        'customers' => Customer::all()
     ]);
 });
 
@@ -123,4 +127,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/categories/checkSlug', [CategoryController::class, 'checkSlug']);
     Route::resource('/dashboard/blogs', BlogController::class)->except('show');
     Route::get('/dashboard/blogs/checkSlug', [BlogController::class, 'checkSlug']);
+    Route::resource('/dashboard/customers', CustomerController::class)->except('show');
 });

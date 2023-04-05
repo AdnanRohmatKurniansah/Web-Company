@@ -63,7 +63,7 @@ class AuthController extends Controller
             'password' => Hash::make($request->new_password)
         ]);
 
-        return back()->with('toast_success', "Password changed successfully!");
+        return back()->with('toast_success', "Password Changed Successfuly!");
     }
     public function register() {
         return view('auth.register', [
@@ -87,6 +87,6 @@ class AuthController extends Controller
         
         //$request->session()->flash('success', 'Registration successfull! Please login ');
         
-        return redirect('/dashboard/index')->with('success', 'New admin added successfully');
+        return redirect('/dashboard/index')->with('success', 'New Admin Added Successfully');
     }
 }

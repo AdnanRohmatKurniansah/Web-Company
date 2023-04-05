@@ -57,7 +57,7 @@ class BlogController extends Controller
 
         Blog::create($validatedData);
         
-        return redirect('/dashboard/blogs')->with('success', 'New blog has been added!');
+        return redirect('/dashboard/blogs')->with('success', 'New Blog has been added!');
     }
 
     /**

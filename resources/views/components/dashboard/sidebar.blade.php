@@ -55,7 +55,12 @@
     <li class="nav-item {{ Request::is('dashboard/portfolios*') ? 'active' : '' }}">
         <a class="nav-link" href="/dashboard/portfolios">
             <i class="fas fa-fw fa-folder"></i>
-            <span>Portfolio</span></a>
+            <span>Portfolios</span></a>
+    </li>
+    <li class="nav-item {{ Request::is('dashboard/customers*') ? 'active' : '' }}">
+        <a class="nav-link" href="/dashboard/customers">
+            <i class="fa-solid fa-users-between-lines"></i>
+            <span>Customers</span></a>
     </li>
     <li class="nav-item {{ Request::is('dashboard/blogs') || Request::is('dashboard/categories') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -73,7 +78,7 @@
     <li class="nav-item {{ Request::is('dashboard/contacts*') ? 'active' : '' }}">
         <a class="nav-link" href="/dashboard/contacts">
             <i class="fa-sharp fa-regular fa-comments"></i>
-            <span>Contact</span></a>
+            <span>Contacts</span></a>
     </li>
 
     

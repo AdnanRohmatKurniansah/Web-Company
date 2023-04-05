@@ -47,7 +47,7 @@ class SlideController extends Controller
 
         Slide::create($validatedData);
 
-        return redirect('/dashboard/slides')->with('success', 'Slide Created Successfully!');
+        return redirect('/dashboard/slides')->with('success', 'New Slide has been added!');
 
     }
 

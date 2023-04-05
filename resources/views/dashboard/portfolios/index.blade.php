@@ -10,7 +10,7 @@
                     <h5 class="m-0 font-weight-bold text-primary">Portfolios</h5>
                 </div>
                 <div class="card-body">
-                    <a href="/dashboard/portfolios/create" class="btn btn-primary my-2">Create new portfolios</a>
+                    <a href="/dashboard/portfolios/create" class="btn btn-primary my-2">Add new portfolio</a>
                     <table class="table">
                         <thead>
                           <tr>

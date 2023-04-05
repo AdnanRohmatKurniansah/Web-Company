@@ -47,7 +47,7 @@ class AboutController extends Controller
 
         About::create($validatedData);
         
-        return redirect('/dashboard/abouts')->with('success', 'New about has been added!');
+        return redirect('/dashboard/abouts')->with('success', 'New About has been added!');
     }
 
     /**

@@ -7,10 +7,10 @@
 
             <div class="card mb-4">
                 <div class="card-header py-3">
-                    <h5 class="m-0 font-weight-bold text-primary">Our Teams</h5>
+                    <h5 class="m-0 font-weight-bold text-primary">Our Team</h5>
                 </div>
                 <div class="card-body">
-                    <a href="/dashboard/teams/create" class="btn btn-primary my-2">Create new team</a>
+                    <a href="/dashboard/teams/create" class="btn btn-primary my-2">Add new team</a>
                     <table class="table">
                         <thead>
                           <tr>

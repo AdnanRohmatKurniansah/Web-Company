@@ -10,7 +10,7 @@
                     <h5 class="m-0 font-weight-bold text-primary">Blog Categories</h5>
                 </div>
                 <div class="card-body">
-                    <a href="/dashboard/categories/create" class="btn btn-primary my-2">Create new category</a>
+                    <a href="/dashboard/categories/create" class="btn btn-primary my-2">Add new category</a>
                     <table class="table">
                         <thead>
                           <tr>

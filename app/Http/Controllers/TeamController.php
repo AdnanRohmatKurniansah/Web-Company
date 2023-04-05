@@ -51,7 +51,7 @@ class TeamController extends Controller
 
         Team::create($validatedData);
 
-        return redirect('/dashboard/teams')->with('success', 'Team Created Successfully!');
+        return redirect('/dashboard/teams')->with('success', 'New Team has been added!');
     }
 
     /**

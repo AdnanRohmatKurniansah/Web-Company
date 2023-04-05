@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
-use App\Models\Portfolio;
-use App\Models\Service;
+use App\Models\Customer;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 
-class PortfolioController extends Controller
+class CustomerController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        return view('dashboard.portfolios.index', [
-            "portfolios" => Portfolio::all(),
+        return view('dashboard.customers.index', [
+            'customers' => Customer::all(),
             'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
@@ -26,8 +25,8 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        return view('dashboard.portfolios.create', [
-            'services' => Service::all(), 
+        return view('dashboard.customers.create', [
+            'customers' => Customer::all(), 
             'messages' => Contact::where('status', 'unread')->get()
         ]);
     }
@@ -38,24 +37,23 @@ class PortfolioController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'projectName' => 'required|max:60',
-            'service_id' => 'required',
+            'imgName' => 'required|max:60',
             'image' => 'image|file|max:2048'
         ]);  
 
         if($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('portfolio-images');
+            $validatedData['image'] = $request->file('image')->store('customer-images');
         } // jika tdk ada maka gunakan image lama
 
-        Portfolio::create($validatedData);
+        Customer::create($validatedData);
 
-        return redirect('/dashboard/portfolios')->with('success', 'New Portfolio has been added!');
+        return redirect('/dashboard/customers')->with('success', 'New Customer has been added!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Portfolio $portfolio)
+    public function show(Customer $customer)
     {
         //
     }
@@ -63,24 +61,21 @@ class PortfolioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Portfolio $portfolio)
+    public function edit(Customer $customer)
     {
-        return view('dashboard.portfolios.edit', [
-            'portfolio' => $portfolio,
-            'services' => Service::all(),
+        return view('dashboard.customers.edit', [
+            'customer' => $customer,
             'messages' => Contact::where('status', 'unread')->get()
         ]);
-
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Portfolio $portfolio)
+    public function update(Request $request, Customer $customer)
     {
         $validatedData = $request->validate([
-            'projectName' => 'required|max:60',
-            'service_id' => 'required',
+            'imgName' => 'required|max:60',
             'image' => 'image|file|max:2048'
         ]);
 
@@ -88,29 +83,29 @@ class PortfolioController extends Controller
             if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
-            $validatedData['image'] = $request->file('image')->store('portfolio-images');
+            $validatedData['image'] = $request->file('image')->store('customer-images');
         }
 
         if($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('portfolio-images');
+            $validatedData['image'] = $request->file('image')->store('customer-images');
         } 
 
-        Portfolio::where('id', $portfolio->id)
+        Customer::where('id', $customer->id)
              ->update($validatedData);
         
-             return redirect('/dashboard/portfolios')->with('success', 'Portfolio has been updated!');
+             return redirect('/dashboard/customers')->with('success', 'Customer has been updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Portfolio $portfolio)
+    public function destroy(Customer $customer)
     {
-        if ($portfolio->image) {
-            Storage::delete($portfolio->image);
+        if ($customer->image) {
+            Storage::delete($customer->image);
         }
         
-        Portfolio::destroy($portfolio->id);
-        return redirect('/dashboard/portfolios')->with('success', 'Portfolio has been deleted!');
+        Customer::destroy($customer->id);
+        return redirect('/dashboard/customers')->with('success', 'Portfolio has been deleted!');
     }
 }

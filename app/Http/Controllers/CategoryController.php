@@ -42,7 +42,7 @@ class CategoryController extends Controller
 
         Category::create($validatedData);
         
-        return redirect('/dashboard/categories')->with('success', 'New category has been added!');
+        return redirect('/dashboard/categories')->with('success', 'New Category has been added!');
     }
 
     /**
