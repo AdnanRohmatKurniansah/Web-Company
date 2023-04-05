@@ -2,7 +2,7 @@
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/dashboard/index">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fa-brands fa-superpowers fa-spin"></i>
         </div>
@@ -16,7 +16,7 @@
     <li class="nav-item {{ Request::is('dashboard/index') ? 'active' : '' }}">
         <a class="nav-link" href="/dashboard/index">
             <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+        <span>Dashboard</span></a>
     </li>
 
     <!-- Divider -->

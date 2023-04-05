@@ -10,7 +10,7 @@
                     <h5 class="m-0 font-weight-bold text-primary">Our Team</h5>
                 </div>
                 <div class="card-body">
-                    <a href="/dashboard/teams/create" class="btn btn-primary my-2">Add new team</a>
+                    <a href="/dashboard/teams/create" class="btn btn-primary my-2">Add New Team</a>
                     <table class="table">
                         <thead>
                           <tr>

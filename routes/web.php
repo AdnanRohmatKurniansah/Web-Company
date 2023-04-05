@@ -103,10 +103,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/index', function () {
         return view('dashboard.index', [
             'messages' => Contact::where('status', 'unread')->get(),
-            'portfolios' => Portfolio::all(),
-            'services' => Service::all(),
-            'blogs' => Blog::all(),
-            'teams' => Team::all()
+            'portfolios' => Portfolio::count(),
+            'services' => Service::count(),
+            'blogs' => Blog::count(),
+            'teams' => Team::count()
         ]);
     });
 

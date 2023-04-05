@@ -19,7 +19,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                                 Portfolios</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $portfolios->count() }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $portfolios }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fas fa-fw fa-folder fa-2x text-gray-300"></i>
@@ -37,7 +37,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                 Services</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $services->count() }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $services }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-screwdriver-wrench fa-2x text-gray-300"></i>
@@ -54,7 +54,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
                                 Blogs</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $blogs->count() }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $blogs }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-brands fa-blogger fa-2x text-gray-300"></i>
@@ -72,7 +72,7 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
                                 Teams</div>
-                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $teams->count() }}</div>
+                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $teams }}</div>
                         </div>
                         <div class="col-auto">
                             <i class="fa-solid fa-people-group fa-2x text-gray-300"></i>

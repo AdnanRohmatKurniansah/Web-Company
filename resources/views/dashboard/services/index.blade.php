@@ -10,7 +10,7 @@
                     <h5 class="m-0 font-weight-bold text-primary">Services</h5>
                 </div>
                 <div class="card-body">
-                    <a href="/dashboard/services/create" class="btn btn-primary my-2">Add new service</a>
+                    <a href="/dashboard/services/create" class="btn btn-primary my-2">Add New Service</a>
                     <table class="table">
                         <thead>
                           <tr>

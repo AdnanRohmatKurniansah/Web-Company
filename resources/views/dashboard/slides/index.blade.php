@@ -10,7 +10,7 @@
                     <h5 class="m-0 font-weight-bold text-primary">Slides</h5>
                 </div>
                 <div class="card-body">
-                    <a href="/dashboard/slides/create" class="btn btn-primary my-2">Add new slide</a>
+                    <a href="/dashboard/slides/create" class="btn btn-primary my-2">Add New Slide</a>
                     <table class="table">
                         <thead>
                           <tr>

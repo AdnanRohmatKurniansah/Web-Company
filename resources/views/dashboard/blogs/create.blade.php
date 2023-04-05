@@ -5,7 +5,7 @@
 
     <div class="card mb-4">
         <div class="card-header py-3">
-            <h5 class="m-0 font-weight-bold text-primary">Add new blog</h5>
+            <h5 class="m-0 font-weight-bold text-primary">Add New Blog</h5>
         </div>
         <div class="container">
             <form action="/dashboard/blogs" method="post" enctype="multipart/form-data" class="m-3">

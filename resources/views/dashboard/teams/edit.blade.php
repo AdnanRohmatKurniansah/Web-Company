@@ -89,7 +89,7 @@
                         </div>
                     @enderror
                   </div>
-                  <button type="submit" class="btn btn-primary">Update team</button>
+                  <button type="submit" class="btn btn-primary">Update Team</button>
                 </form> 
             </div>
 

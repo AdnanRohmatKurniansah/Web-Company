@@ -7,7 +7,7 @@
 
         <div class="card mb-4">
             <div class="card-header py-3">
-                <h5 class="m-0 font-weight-bold text-primary">Edit Portfolio</h5>
+                <h5 class="m-0 font-weight-bold text-primary">Edit Customer</h5>
             </div>
             <div class="container">
               <form action="/dashboard/customers/{{ $customer->id }}" method="post" enctype="multipart/form-data" class="m-3">
@@ -39,7 +39,7 @@
                         </div>
                     @enderror
                   </div>
-                  <button type="submit" class="btn btn-primary">Update portfolio</button>
+                  <button type="submit" class="btn btn-primary">Update Customer</button>
                 </form> 
             </div>
 
