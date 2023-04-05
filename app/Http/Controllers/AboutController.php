@@ -43,7 +43,7 @@ class AboutController extends Controller
      
         if($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('about-images');
-        } // jika tdk ada maka gunakan image lama
+        } 
 
         About::create($validatedData);
         

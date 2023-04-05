@@ -53,7 +53,7 @@ class BlogController extends Controller
         } // jika tdk ada maka gunakan image lama
 
         $validatedData['user_id'] = auth()->user()->id;
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 100);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 150);
 
         Blog::create($validatedData);
         
@@ -109,7 +109,7 @@ class BlogController extends Controller
             $validatedData['image'] = $request->file('image')->store('blog-images');
         } 
         
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 150);
 
         Blog::where('id', $blog->id)
              ->update($validatedData);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -9,7 +10,8 @@ class ContactController extends Controller
 {
     public function create() {
         return view('contact', [
-            'title' => "Contact Us"
+            'title' => "Contact Us",
+            'abouts' => About::all()
         ]);
     }
     public function store(Request $request) {
@@ -26,7 +28,7 @@ class ContactController extends Controller
     public function index() {
         return view('dashboard.contacts.index', [
             'messages' => Contact::where('status', 'unread')->get(),
-            'contacts' => Contact::all()
+            'contacts' => Contact::all(),
         ]);
     }
     public function show($id) {

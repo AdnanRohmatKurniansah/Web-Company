@@ -56,14 +56,16 @@ Route::get('/services', function () {
     return view('services', [
         'title' => "Services",
         'services' => Service::all(),
-        'customers' => Customer::all()
+        'customers' => Customer::all(),
+        'abouts' => About::all()
     ]);
 });
 
 Route::get('/portfolio', function () {
     return view('portfolio', [
         'title' => "Portfolio",
-        'portfolios' => Portfolio::latest()->paginate(6)
+        'portfolios' => Portfolio::latest()->paginate(6),
+        'abouts' => About::all()
     ]);
 });
 
@@ -72,7 +74,8 @@ Route::get('/blog', function () {
         'title' => "Blog",
         'blogs' => Blog::latest()->with('category')->filter(request(['search', 'category']))
         ->paginate(3)->withQueryString(),
-        'categories' => Category::all()
+        'categories' => Category::all(),
+        'abouts' => About::all()
     ]);
 });
 
@@ -80,7 +83,8 @@ Route::get('/blog/{blog:slug}', function (Blog $blog) {
     return view('blogDetail', [
         'title' => "Blog Detail",
         'blogs' => Blog::all(),
-        'blog' => $blog
+        'blog' => $blog,
+        'abouts' => About::all()
     ]);
 });
 
