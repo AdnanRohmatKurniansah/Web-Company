@@ -15,7 +15,7 @@ class Category extends Model
     public function blogs()
     {
         return $this->hasMany(Blog::class);
-    }// relasi ke posts
+    }// relasi ke blogs
 
     public function getRouteKeyName()
     {

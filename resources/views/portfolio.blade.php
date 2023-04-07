@@ -29,7 +29,7 @@
 								<img class="card-img-top" src="{{ asset('storage/' . $portfolio->image) }}" alt="" />
 							</a>
 							<div class="card-body">
-								<h4><a href="#">{{ $portfolio->projectName }}</a></h4>
+								<h4><a disabled>{{ $portfolio->projectName }}</a></h4>
 								<p>{{ $portfolio->service->type }}</p>
 							</div>
 						</div>

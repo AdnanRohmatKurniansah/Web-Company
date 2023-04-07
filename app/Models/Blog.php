@@ -10,7 +10,7 @@ class Blog extends Model
 {
     use HasFactory, Sluggable;
 
-    protected $guarded = ['id', 'category_id'];
+    protected $guarded = ['id'];
     protected $with = ['category'];
 
     public function scopeFilter($query, array $filters) 

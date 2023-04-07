@@ -64,19 +64,18 @@
 							<div class="row">
 								<div class="col-lg-6">
 									<ul class="list-unstyled mb-0">
-										@foreach ($blogs as $blog)
-											<li><a href="/blog?category={{ $blog->category->slug }}">{{ $blog->category->name }}</a></li>
+										@foreach ($categories as $category)
+											<li><a href="/blog?category={{ $category->slug }}">{{ $category->name }}</a></li>
 										@endforeach
 									</ul>
 								</div>
 								<div class="col-lg-6">
 									<ul class="list-unstyled mb-0">
-										@foreach ($blogs->skip(6) as $blog)
-											<li><a href="/blog?category={{ $blog->category->slug }}">{{ $blog->category->name }}</a></li>
+										@foreach ($categories->skip(6) as $category)
+											<li><a href="/blog?category={{ $category->slug }}">{{ $category->name }}</a></li>
 										@endforeach
 									</ul>
 								</div>
-								
 							</div>
 						</div>
 					</div>

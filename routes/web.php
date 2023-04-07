@@ -82,7 +82,8 @@ Route::get('/blog', function () {
 Route::get('/blog/{blog:slug}', function (Blog $blog) {
     return view('blogDetail', [
         'title' => "Blog Detail",
-        'blogs' => Blog::all(),
+        // 'blogs' => Blog::all(),
+        'categories' => Category::all(),
         'blog' => $blog,
         'abouts' => About::all()
     ]);

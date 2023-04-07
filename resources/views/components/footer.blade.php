@@ -8,7 +8,7 @@
                 @php
                     $about = $abouts[0]->desc
                 @endphp
-                <p class="mb10">{{ $desc = Str::limit(strip_tags($about, 80)) }}</p>
+                <p class="mb10">{{ $desc = Str::limit(strip_tags($about, 50)) }}</p>
                 <ul class="footer-social">
                     <li><a class="facebook hb-xs-margin" href="#"><span class="hb hb-xs spin hb-facebook"><i class="fab fa-facebook-f"></i></span></a></li>
                     <li><a class="twitter hb-xs-margin" href="#"><span class="hb hb-xs spin hb-twitter"><i class="fab fa-twitter"></i></span></a></li>
