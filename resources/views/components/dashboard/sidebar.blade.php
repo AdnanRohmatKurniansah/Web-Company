@@ -27,23 +27,33 @@
         Interface
     </div>
 
-    <li class="nav-item {{ Request::is('dashboard/slides*') ? 'active' : '' }}">
-        <a class="nav-link" href="/dashboard/slides">
-            <i class="fa-solid fa-image"></i>
-            <span>Slides</span></a>
-    </li>
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item {{ Request::is('dashboard/abouts') || Request::is('dashboard/teams') ? 'active' : '' }}">
+    <li class="nav-item {{ Request::is('dashboard/slides*') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
-            <i class="fa-regular fa-address-card"></i>
-            <span>About Page</span></a>
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span></a>
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
+                <a class="collapse-item {{ Request::is('dashboard/slides*') ? 'active' : '' }}" href="/dashboard/slides">Slides</a>
+            </div>
+        </div>
+    </li>
+    <!-- Nav Item - Utilities Collapse Menu -->
+    <li class="nav-item {{ Request::is('dashboard/abouts') || Request::is('dashboard/teams') || Request::is('dashboard/customers') ? 'active' : '' }}">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilitiesed"
+            aria-expanded="true" aria-controls="collapseUtilities">
+            <i class="fa-regular fa-address-card"></i>
+            <span>About Page</span></a>
+        </a>
+        <div id="collapseUtilitiesed" class="collapse" aria-labelledby="headingUtilities"
+            data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
                 <a class="collapse-item {{ Request::is('dashboard/abouts*') ? 'active' : '' }}" href="/dashboard/abouts">About</a>
                 <a class="collapse-item {{ Request::is('dashboard/teams*') ? 'active' : '' }}" href="/dashboard/teams">Our Team</a>
+                <a class="collapse-item {{ Request::is('dashboard/customers*') ? 'active' : '' }}" href="/dashboard/customers">Customers</a>
             </div>
         </div>
     </li>
@@ -57,11 +67,7 @@
             <i class="fas fa-fw fa-folder"></i>
             <span>Portfolios</span></a>
     </li>
-    <li class="nav-item {{ Request::is('dashboard/customers*') ? 'active' : '' }}">
-        <a class="nav-link" href="/dashboard/customers">
-            <i class="fa-solid fa-users-between-lines"></i>
-            <span>Customers</span></a>
-    </li>
+   
     <li class="nav-item {{ Request::is('dashboard/blogs') || Request::is('dashboard/categories') ? 'active' : '' }}">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
             aria-expanded="true" aria-controls="collapsePages">
